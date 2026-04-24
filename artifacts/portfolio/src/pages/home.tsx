@@ -25,58 +25,58 @@ const SKILLS = [
 const PROJECTS = [
   {
     num: "01",
+    title: "KP",
+    category: "Personal Website",
+    year: "2025",
+    description:
+      "A personal portfolio and professional website — clean, fast, and built to make a lasting first impression. Live at kalebbelete.com.",
+    tech: ["TypeScript", "React", "Tailwind CSS", "Vite"],
+    live: "https://kalebbelete.com",
+  },
+  {
+    num: "02",
     title: "Adulis Food Complex",
     category: "Food & Hospitality",
     year: "2025",
     description:
       "A modern web platform for a food business — rich menu presentation, ordering flows, and a clean TypeScript stack built for real operations.",
     tech: ["TypeScript", "React", "CSS", "Replit"],
-    demo:   "https://replit.com/@amanu459717/Adulis-Food-Complex",
-    github: "https://github.com/amanu477/Adulis-Food-Complex",
   },
   {
-    num: "02",
+    num: "03",
     title: "Medfinder",
     category: "Healthcare",
     year: "2024",
     description:
       "A healthcare tool helping users locate medications and information fast. Python backend paired with a simple, effective HTML/CSS/JS front end.",
     tech: ["Python", "HTML", "JavaScript", "CSS"],
-    demo:   "https://github.com/amanu477/medfinder",
-    github: "https://github.com/amanu477/medfinder",
   },
   {
-    num: "03",
+    num: "04",
     title: "Propick",
     category: "Product Discovery",
     year: "2025",
     description:
       "A streamlined product-pick platform with a focused, conversion-first user flow. Built lean with TypeScript and React for rapid iteration.",
     tech: ["TypeScript", "React", "JavaScript", "CSS"],
-    demo:   "https://github.com/amanu477/propick",
-    github: "https://github.com/amanu477/propick",
   },
   {
-    num: "04",
+    num: "05",
     title: "Ecom",
     category: "E-Commerce",
     year: "2024",
     description:
       "A full e-commerce application — product browsing, cart management, and checkout — built on a robust TypeScript codebase ready for production.",
     tech: ["TypeScript", "React", "JavaScript", "CSS"],
-    demo:   "https://github.com/amanu477/ecom",
-    github: "https://github.com/amanu477/ecom",
   },
   {
-    num: "05",
+    num: "06",
     title: "Youthcom",
     category: "Community Platform",
     year: "2025",
     description:
       "A community hub for youth organisations — clean information architecture, event listings, and an intuitive member experience built with TypeScript.",
     tech: ["TypeScript", "React", "CSS", "Node.js"],
-    demo:   "https://github.com/amanu477/youthcom",
-    github: "https://github.com/amanu477/youthcom",
   },
 ];
 
@@ -183,12 +183,12 @@ function ProjectRow({
             transition={{ duration: 0.45, ease }}
             className="overflow-hidden"
           >
-            <div className="pb-10 pl-0 md:pl-22 grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+            <div className={`pb-10 pl-0 md:pl-22 ${p.live ? "grid grid-cols-1 md:grid-cols-2 gap-8 items-start" : "max-w-xl"}`}>
               <div>
-                <p className="text-muted-foreground leading-relaxed text-base font-light mb-6">
+                <p className="text-muted-foreground leading-relaxed text-base font-light mb-5">
                   {p.description}
                 </p>
-                <div className="flex flex-wrap gap-2 mb-6">
+                <div className="flex flex-wrap gap-2">
                   {p.tech.map((t) => (
                     <span
                       key={t}
@@ -199,16 +199,14 @@ function ProjectRow({
                   ))}
                 </div>
               </div>
-              <div className="flex flex-col sm:flex-row md:flex-col gap-3 md:items-end">
-                <a href={p.demo} target="_blank" rel="noreferrer" className="btn-primary">
-                  <ExternalLink size={14} />
-                  <span>Live Preview</span>
-                </a>
-                <a href={p.github} target="_blank" rel="noreferrer" className="btn-outline">
-                  <Github size={14} />
-                  <span>Source Code</span>
-                </a>
-              </div>
+              {p.live && (
+                <div className="flex md:items-end">
+                  <a href={p.live} target="_blank" rel="noreferrer" className="btn-primary">
+                    <ExternalLink size={14} />
+                    <span>Visit Live Site</span>
+                  </a>
+                </div>
+              )}
             </div>
           </motion.div>
         )}
@@ -515,7 +513,7 @@ export default function Home() {
                     <em className="italic gradient-text">precision.</em>
                   </h2>
                   <p className="text-muted-foreground font-light leading-relaxed text-base max-w-md">
-                    {ME.bio} I reach for the right tools for the job — lately that's TypeScript and React, but the stack always follows the problem.
+                    {ME.bio}
                   </p>
                 </RevealBlock>
 
