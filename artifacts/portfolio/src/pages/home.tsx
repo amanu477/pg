@@ -12,74 +12,106 @@ USER CONFIGURATION: EDIT YOUR PERSONAL INFORMATION HERE
 =============================================================================
 */
 const CONFIG = {
-  name: "Alex Carter",
-  role: "Senior Full-Stack Engineer",
-  location: "Berlin, Germany",
-  tagline: "Building digital experiences that bridge the gap between engineering rigor and beautiful design.",
-  bio: "I'm a software engineer with over 8 years of experience crafting high-performance web applications and distributed systems. I believe in writing code that not only works flawlessly but is a joy to read and maintain. When I'm not architecting backends or refining UIs, you'll find me contributing to open source or exploring the intersection of generative AI and design.",
-  email: "hello@alexcarter.dev",
+  name: "Amanu",
+  role: "Full-Stack Web Developer",
+  location: "",
+  tagline: "Designing and shipping modern web applications — from concept to deployment.",
+  bio: "I'm a self-driven full-stack developer who builds real products end to end. My work spans e-commerce platforms, restaurant and gym websites, healthcare tools, trading dashboards, and small business sites. I care about clean interfaces, fast iteration, and turning ideas into something people can actually use. Most of my recent stack lives in TypeScript and React, but I'll reach for whatever fits the problem.",
+  email: "amanu477@github.com",
   socials: {
-    github: "https://github.com/placeholder",
-    linkedin: "https://linkedin.com/in/placeholder",
-    twitter: "https://twitter.com/placeholder",
+    github: "https://github.com/amanu477",
+    linkedin: "https://linkedin.com/in/amanu477",
+    twitter: "https://github.com/amanu477",
   },
   skills: [
-    { category: "Frontend", items: ["React", "TypeScript", "Next.js", "Tailwind CSS", "Framer Motion", "Vue"] },
-    { category: "Backend", items: ["Node.js", "Go", "PostgreSQL", "Redis", "GraphQL", "REST APIs"] },
-    { category: "Infrastructure", items: ["AWS", "Docker", "Kubernetes", "Terraform", "CI/CD"] },
+    { category: "Frontend", items: ["React", "TypeScript", "JavaScript", "HTML", "CSS", "Tailwind CSS"] },
+    { category: "Backend", items: ["Node.js", "Python", "REST APIs", "Web Scraping", "CRUD Systems"] },
+    { category: "Tools & Workflow", items: ["Git", "GitHub", "Replit", "VS Code", "Vite", "npm"] },
   ],
   experience: [
     {
-      role: "Lead Engineer",
-      company: "Nexus Systems",
-      period: "2021 — Present",
-      description: "Leading the core platform team. Architected a microservices transition that improved system throughput by 40%."
+      role: "Independent Web Developer",
+      company: "Freelance & Personal Projects",
+      period: "2025 — Present",
+      description: "Building production web apps across e-commerce, food, fitness, healthcare, and trading domains. Shipping full TypeScript + React stacks end to end."
     },
     {
-      role: "Senior Full-Stack Developer",
-      company: "Vanguard Digital",
-      period: "2018 — 2021",
-      description: "Developed high-traffic e-commerce solutions. Introduced strict type-safety and automated testing pipelines."
+      role: "Full-Stack Developer",
+      company: "Self-Initiated Projects",
+      period: "2024 — 2025",
+      description: "Expanded into Python-based backends, web scraping, and CRUD systems. Started layering modern frontend tooling into every project."
     },
     {
-      role: "Frontend Engineer",
-      company: "Lumen Studio",
-      period: "2015 — 2018",
-      description: "Built interactive web experiences for enterprise clients using React and WebGL."
+      role: "Web Developer (Learning & Building)",
+      company: "Personal Studio",
+      period: "2023 — 2024",
+      description: "First portfolio sites, restaurant pages, and small interactive HTML/CSS/JS apps. Foundation for everything that came after."
     }
   ],
   projects: [
     {
-      title: "Tideflow",
-      description: "A real-time collaborative workspace for remote engineering teams. Features CRDT-based document editing and instant presence.",
-      tech: ["React", "Node.js", "WebSockets", "Redis"],
+      title: "MMC",
+      description: "A modern TypeScript-based web application — the most recent project in active development.",
+      tech: ["TypeScript", "React", "CSS", "HTML"],
       image: "/images/project-1.png",
-      demo: "https://tideflow.placeholder.app",
-      github: "https://github.com/placeholder/tideflow"
+      demo: "https://github.com/amanu477/MMC",
+      github: "https://github.com/amanu477/MMC"
     },
     {
-      title: "Lumen Design System",
-      description: "An open-source accessible component library built on top of Radix UI and Tailwind CSS, used by over 500 developers.",
-      tech: ["TypeScript", "React", "Storybook", "Tailwind"],
+      title: "Adulis Food Complex",
+      description: "A web platform for a food complex business — menus, ordering, and presentation built on a clean TypeScript stack.",
+      tech: ["TypeScript", "React", "CSS", "Replit"],
       image: "/images/project-2.png",
-      demo: "https://lumen.placeholder.app",
-      github: "https://github.com/placeholder/lumen"
+      demo: "https://replit.com/@amanu459717/Adulis-Food-Complex",
+      github: "https://github.com/amanu477/Adulis-Food-Complex"
     },
     {
-      title: "Aura Analytics",
-      description: "High-performance data visualization dashboard processing millions of events per second with Rust and ClickHouse.",
-      tech: ["Rust", "ClickHouse", "React", "D3.js"],
+      title: "Ecom",
+      description: "A full e-commerce web application with product flows and a substantial TypeScript codebase.",
+      tech: ["TypeScript", "React", "JavaScript", "CSS"],
       image: "/images/project-3.png",
-      demo: "https://aura.placeholder.app",
-      github: "https://github.com/placeholder/aura"
+      demo: "https://github.com/amanu477/ecom",
+      github: "https://github.com/amanu477/ecom"
     },
     {
-      title: "Syntax Flow",
-      description: "A developer-focused habit tracker that integrates with GitHub and WakaTime to map coding patterns over time.",
-      tech: ["Next.js", "Prisma", "PostgreSQL", "NextAuth"],
+      title: "Gym Web",
+      description: "A fitness studio web app built with TypeScript — pages for classes, schedules, and member-facing content.",
+      tech: ["TypeScript", "JavaScript", "HTML", "CSS"],
       image: "/images/project-4.png",
-      demo: "https://syntax.placeholder.app",
-      github: "https://github.com/placeholder/syntax"
+      demo: "https://github.com/amanu477/Gym-web",
+      github: "https://github.com/amanu477/Gym-web"
+    },
+    {
+      title: "Medfinder",
+      description: "A healthcare-focused tool helping users find medications and related info. Mixes Python on the backend with HTML/CSS/JS up front.",
+      tech: ["HTML", "Python", "CSS", "JavaScript"],
+      image: "/images/project-1.png",
+      demo: "https://github.com/amanu477/medfinder",
+      github: "https://github.com/amanu477/medfinder"
+    },
+    {
+      title: "Trade Horizon",
+      description: "A trading-themed web project blending HTML, JavaScript, and Python — focused on data presentation and user-facing dashboards.",
+      tech: ["HTML", "JavaScript", "Python", "CSS"],
+      image: "/images/project-2.png",
+      demo: "https://github.com/amanu477/trade-horizon",
+      github: "https://github.com/amanu477/trade-horizon"
+    },
+    {
+      title: "Propick",
+      description: "A TypeScript application built around a focused product-pick flow — modern, lean, and quick to iterate.",
+      tech: ["TypeScript", "React", "JavaScript", "CSS"],
+      image: "/images/project-3.png",
+      demo: "https://github.com/amanu477/propick",
+      github: "https://github.com/amanu477/propick"
+    },
+    {
+      title: "Affiliate Project",
+      description: "A TypeScript-driven affiliate platform — clean structure, modern tooling, real production patterns.",
+      tech: ["TypeScript", "React", "CSS", "HTML"],
+      image: "/images/project-4.png",
+      demo: "https://github.com/amanu477/affiliate-project",
+      github: "https://github.com/amanu477/affiliate-project"
     }
   ]
 };
@@ -237,9 +269,9 @@ export default function Home() {
                   <div className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-primary/20 to-transparent -translate-x-4 translate-y-4" />
                   <div className="absolute inset-0 rounded-2xl border border-border bg-card overflow-hidden">
                     <img 
-                      src="/images/avatar.png" 
+                      src="https://avatars.githubusercontent.com/u/151337776?v=4" 
                       alt={CONFIG.name} 
-                      className="w-full h-full object-cover mix-blend-luminosity dark:mix-blend-normal opacity-90 transition-transform duration-700 hover:scale-105"
+                      className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                     />
                   </div>
                 </div>
