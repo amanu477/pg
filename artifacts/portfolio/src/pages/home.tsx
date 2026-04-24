@@ -9,7 +9,7 @@ const ME = {
   role: "Full-Stack Developer",
   bio: "I craft end-to-end digital products — from thoughtful interfaces to resilient backends. Based everywhere, building for everyone.",
   email: "amanu477@github.com",
-  avatar: "/images/avatar.png",
+  avatar: "/images/profile.jpg",
   socials: {
     github:   "https://github.com/amanu477",
     linkedin: "https://linkedin.com/in/amanu477",
@@ -304,10 +304,10 @@ export default function Home() {
         >
           {/* Radial glow */}
           <div className="pointer-events-none absolute inset-0">
-            <div className="absolute top-1/3 right-1/4 -translate-y-1/2 w-[500px] h-[500px] rounded-full blur-[130px]"
-              style={{ background: "radial-gradient(circle, hsl(183 100% 50% / 0.12), hsl(200 90% 55% / 0.06) 50%, transparent 70%)" }} />
-            <div className="absolute bottom-1/4 left-1/4 w-[350px] h-[350px] rounded-full blur-[100px]"
-              style={{ background: "radial-gradient(circle, hsl(220 90% 65% / 0.08), transparent 70%)" }} />
+            <div className="absolute top-1/3 right-1/4 -translate-y-1/2 w-[520px] h-[520px] rounded-full blur-[130px]"
+              style={{ background: "radial-gradient(circle, hsl(213 90% 52% / 0.13), hsl(226 82% 62% / 0.07) 55%, transparent 75%)" }} />
+            <div className="absolute bottom-1/4 left-1/4 w-[340px] h-[340px] rounded-full blur-[100px]"
+              style={{ background: "radial-gradient(circle, hsl(235 80% 68% / 0.08), transparent 70%)" }} />
           </div>
 
           <div className="max-w-7xl mx-auto px-6 md:px-12 w-full">
@@ -414,9 +414,9 @@ export default function Home() {
                   className="relative"
                 >
                   {/* Decorative rings */}
-                  <div className="absolute -inset-4 rounded-full animate-spin" style={{ animationDuration: "20s", border: "1px solid hsl(183 100% 50% / 0.25)" }} />
-                  <div className="absolute -inset-8 rounded-full animate-spin" style={{ animationDuration: "35s", animationDirection: "reverse", border: "1px solid hsl(200 90% 55% / 0.15)" }} />
-                  <div className="absolute -inset-14 rounded-full animate-spin" style={{ animationDuration: "60s", border: "1px dashed hsl(220 90% 65% / 0.10)" }} />
+                  <div className="absolute -inset-4 rounded-full animate-spin" style={{ animationDuration: "20s", border: "1px solid hsl(213 90% 60% / 0.30)" }} />
+                  <div className="absolute -inset-8 rounded-full animate-spin" style={{ animationDuration: "35s", animationDirection: "reverse", border: "1px solid hsl(226 82% 65% / 0.18)" }} />
+                  <div className="absolute -inset-14 rounded-full animate-spin" style={{ animationDuration: "60s", border: "1px dashed hsl(235 80% 70% / 0.12)" }} />
 
                   {/* Photo */}
                   <div className="relative w-[260px] h-[260px] xl:w-[310px] xl:h-[310px] rounded-full overflow-hidden glow">
