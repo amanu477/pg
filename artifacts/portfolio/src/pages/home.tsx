@@ -5,7 +5,7 @@ import { Github, Linkedin, Mail, ArrowUpRight, ExternalLink, Phone, MapPin, Send
 
 /* ─── Content ─────────────────────────────────────────────── */
 const ME = {
-  name: "Amanu",
+  name: "Amanuel Bekuma",
   role: "Full-Stack Developer",
   bio: "I craft end-to-end digital products — from thoughtful interfaces to resilient backends. Based in Addis Ababa, Ethiopia, building for the world.",
   email: "amanubekuma499@gmail.com",
@@ -316,73 +316,79 @@ export default function Home() {
 
               {/* Text */}
               <motion.div style={{ opacity: heroOpacity, y: heroY }}>
+                {/* Greeting */}
                 <motion.div
-                  initial={{ opacity: 0, y: 12 }}
+                  initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.1, ease }}
-                  className="flex items-center gap-3 mb-10"
+                  transition={{ duration: 0.7, delay: 0.1, ease }}
+                  className="flex items-center gap-3 mb-8"
                 >
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inset-0 rounded-full bg-primary opacity-50" />
-                    <span className="relative rounded-full h-2 w-2 bg-primary" />
-                  </span>
-                  <span className="text-[11px] font-mono tracking-[0.22em] uppercase text-muted-foreground">
-                    Open to new projects
+                  <div className="h-px w-8 bg-primary" />
+                  <span className="text-[11px] font-mono tracking-[0.25em] uppercase text-primary">
+                    Hello, I'm
                   </span>
                 </motion.div>
 
-                {/* Big serif headline */}
-                <div className="overflow-hidden mb-3">
-                  <motion.h1
-                    initial={{ y: "105%" }}
-                    animate={{ y: 0 }}
-                    transition={{ duration: 1, delay: 0.2, ease }}
-                    className="font-serif leading-[0.95] tracking-tight"
-                    style={{
-                      fontFamily: "'Cormorant Garamond', Georgia, serif",
-                      fontSize: "clamp(3.6rem, 10vw, 8rem)",
-                      fontWeight: 300,
-                    }}
-                  >
-                    Crafting
-                  </motion.h1>
+                {/* Name */}
+                <div className="mb-6">
+                  <div className="overflow-hidden">
+                    <motion.h1
+                      initial={{ y: "105%" }}
+                      animate={{ y: 0 }}
+                      transition={{ duration: 1, delay: 0.2, ease }}
+                      className="font-serif leading-[0.92] tracking-tight"
+                      style={{
+                        fontFamily: "'Cormorant Garamond', Georgia, serif",
+                        fontSize: "clamp(4rem, 11vw, 9rem)",
+                        fontWeight: 300,
+                      }}
+                    >
+                      Amanuel
+                    </motion.h1>
+                  </div>
+                  <div className="overflow-hidden">
+                    <motion.h1
+                      initial={{ y: "105%" }}
+                      animate={{ y: 0 }}
+                      transition={{ duration: 1, delay: 0.3, ease }}
+                      className="font-serif italic leading-[0.92] tracking-tight gradient-text"
+                      style={{
+                        fontFamily: "'Cormorant Garamond', Georgia, serif",
+                        fontSize: "clamp(4rem, 11vw, 9rem)",
+                        fontWeight: 300,
+                      }}
+                    >
+                      Bekuma.
+                    </motion.h1>
+                  </div>
                 </div>
-                <div className="overflow-hidden mb-3">
-                  <motion.h1
-                    initial={{ y: "105%" }}
-                    animate={{ y: 0 }}
-                    transition={{ duration: 1, delay: 0.32, ease }}
-                    className="font-serif italic leading-[0.95] tracking-tight gradient-text"
-                    style={{
-                      fontFamily: "'Cormorant Garamond', Georgia, serif",
-                      fontSize: "clamp(3.6rem, 10vw, 8rem)",
-                      fontWeight: 300,
-                    }}
-                  >
-                    digital
-                  </motion.h1>
-                </div>
-                <div className="overflow-hidden mb-12">
-                  <motion.h1
-                    initial={{ y: "105%" }}
-                    animate={{ y: 0 }}
-                    transition={{ duration: 1, delay: 0.44, ease }}
-                    className="font-serif leading-[0.95] tracking-tight"
-                    style={{
-                      fontFamily: "'Cormorant Garamond', Georgia, serif",
-                      fontSize: "clamp(3.6rem, 10vw, 8rem)",
-                      fontWeight: 300,
-                    }}
-                  >
-                    excellence.
-                  </motion.h1>
-                </div>
+
+                {/* Role + divider */}
+                <motion.div
+                  initial={{ opacity: 0, scaleX: 0 }}
+                  animate={{ opacity: 1, scaleX: 1 }}
+                  transition={{ duration: 0.8, delay: 0.55, ease }}
+                  style={{ originX: 0 }}
+                  className="flex items-center gap-4 mb-8"
+                >
+                  <div className="h-px flex-1 max-w-[60px] bg-border" />
+                  <span className="text-xs font-mono tracking-[0.2em] uppercase text-muted-foreground">
+                    {ME.role}
+                  </span>
+                  <div className="flex items-center gap-2">
+                    <span className="relative flex h-1.5 w-1.5">
+                      <span className="animate-ping absolute inset-0 rounded-full bg-primary opacity-50" />
+                      <span className="relative rounded-full h-1.5 w-1.5 bg-primary" />
+                    </span>
+                    <span className="text-[10px] font-mono tracking-widest uppercase text-primary">Available</span>
+                  </div>
+                </motion.div>
 
                 <motion.p
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.7, ease }}
-                  className="text-muted-foreground font-light leading-relaxed max-w-md mb-10 text-base md:text-[17px]"
+                  className="text-muted-foreground font-light leading-relaxed max-w-sm mb-10 text-base"
                 >
                   {ME.bio}
                 </motion.p>
