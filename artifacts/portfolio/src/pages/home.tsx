@@ -7,7 +7,8 @@ import { Github, Linkedin, Mail, ArrowUpRight, ExternalLink, Phone, MapPin, Send
 const ME = {
   name: "Amanuel Bekuma",
   role: "Full-Stack Developer",
-  bio: "I craft end-to-end digital products — from thoughtful interfaces to resilient backends. Based in Addis Ababa, Ethiopia, building for the world.",
+  bio: "Full-stack developer. I turn ideas into working software — clean code, real results.",
+  aboutBio: "Full Stack Developer with a B.Sc. in Computer Science from ACT American College. Experienced in building end-to-end web applications using TypeScript, React, and Python, with delivered projects across healthcare, fitness, food, e-commerce, and finance. Focused on clean, maintainable code and shipping products that work.",
   email: "amanubekuma499@gmail.com",
   phone: "+251945961704",
   location: "Addis Ababa, Ethiopia",
@@ -20,9 +21,30 @@ const ME = {
 };
 
 const SKILLS = [
-  "React", "TypeScript", "Node.js", "Python",
-  "REST APIs", "Tailwind CSS", "Vite", "Git",
-  "Drizzle ORM", "PostgreSQL", "Framer Motion", "Express",
+  "TypeScript", "React", "Next.js", "Python",
+  "Django", "Node.js", "PostgreSQL", "REST APIs",
+  "Tailwind CSS", "Flask", "Express", "Git",
+];
+
+const SKILL_GROUPS = [
+  {
+    label: "Frontend",
+    items: ["TypeScript", "JavaScript", "React", "Next.js", "HTML5", "CSS3", "Tailwind"],
+  },
+  {
+    label: "Backend",
+    items: ["Python", "Django", "Flask", "Node.js", "Express", "REST APIs"],
+  },
+  {
+    label: "Databases",
+    items: ["PostgreSQL", "MySQL", "SQLite"],
+  },
+];
+
+const LANGUAGES = [
+  { lang: "Amharic",    level: "Native" },
+  { lang: "Afan Oromo", level: "Native" },
+  { lang: "English",    level: "Professional" },
 ];
 
 const PROJECTS = [
@@ -478,9 +500,9 @@ export default function Home() {
         {/* ── About ───────────────────────────────────────────── */}
         <section id="about" className="py-32 md:py-40">
           <div className="max-w-7xl mx-auto px-6 md:px-12">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
               {/* Profile card */}
-              <RevealBlock>
+              <RevealBlock className="lg:sticky lg:top-8">
                 <div className="relative max-w-md mx-auto lg:mx-0">
                   {/* Corner decorations */}
                   <div className="absolute -top-3 -left-3 w-12 h-12 border-t border-l border-primary" />
@@ -522,12 +544,51 @@ export default function Home() {
                     <em className="italic gradient-text">precision.</em>
                   </h2>
                   <p className="text-muted-foreground font-light leading-relaxed text-base max-w-md">
-                    {ME.bio}
+                    {ME.aboutBio}
                   </p>
                 </RevealBlock>
 
-                {/* Stats */}
+                {/* Skills */}
+                <RevealBlock delay={0.15}>
+                  <p className="text-xs font-mono tracking-[0.2em] uppercase text-primary mb-5">Skills</p>
+                  <div className="space-y-5">
+                    {SKILL_GROUPS.map((group) => (
+                      <div key={group.label} className="flex gap-4 items-start border-t border-border pt-4">
+                        <span className="text-[10px] font-mono tracking-widest uppercase text-muted-foreground w-20 shrink-0 pt-0.5">
+                          {group.label}
+                        </span>
+                        <div className="flex flex-wrap gap-2">
+                          {group.items.map((item) => (
+                            <span
+                              key={item}
+                              className="text-xs font-mono px-2.5 py-1 border border-border text-foreground/70 hover:border-primary hover:text-primary transition-colors"
+                            >
+                              {item}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                    <div className="border-t border-border" />
+                  </div>
+                </RevealBlock>
+
+                {/* Languages */}
                 <RevealBlock delay={0.2}>
+                  <p className="text-xs font-mono tracking-[0.2em] uppercase text-primary mb-5">Languages</p>
+                  <div className="space-y-0">
+                    {LANGUAGES.map(({ lang, level }) => (
+                      <div key={lang} className="flex items-center justify-between border-t border-border py-3">
+                        <span className="text-sm font-light text-foreground">{lang}</span>
+                        <span className="text-[10px] font-mono tracking-widest uppercase text-primary">{level}</span>
+                      </div>
+                    ))}
+                    <div className="border-t border-border" />
+                  </div>
+                </RevealBlock>
+
+                {/* Stats */}
+                <RevealBlock delay={0.25}>
                   <div className="grid grid-cols-3 gap-0 border border-border">
                     {[
                       { num: "5+",  label: "Projects" },
