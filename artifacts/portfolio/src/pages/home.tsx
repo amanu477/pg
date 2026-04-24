@@ -1,14 +1,17 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useTransform, useInView, AnimatePresence } from "framer-motion";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { Github, Linkedin, Mail, ArrowUpRight, ExternalLink } from "lucide-react";
+import { Github, Linkedin, Mail, ArrowUpRight, ExternalLink, Phone, MapPin, Send } from "lucide-react";
 
 /* ─── Content ─────────────────────────────────────────────── */
 const ME = {
   name: "Amanu",
   role: "Full-Stack Developer",
-  bio: "I craft end-to-end digital products — from thoughtful interfaces to resilient backends. Based everywhere, building for everyone.",
+  bio: "I craft end-to-end digital products — from thoughtful interfaces to resilient backends. Based in Addis Ababa, Ethiopia, building for the world.",
   email: "amanu477@github.com",
+  phone: "+251945961704",
+  location: "Addis Ababa, Ethiopia",
+  telegram: "yoakin4",
   avatar: "/images/profile.jpg",
   socials: {
     github:   "https://github.com/amanu477",
@@ -588,37 +591,92 @@ export default function Home() {
         </section>
 
         {/* ── Contact ─────────────────────────────────────────── */}
-        <section id="contact" className="py-32 md:py-48 bg-secondary/20 border-t border-border">
+        <section id="contact" className="py-32 md:py-40 bg-secondary/20 border-t border-border">
           <div className="max-w-7xl mx-auto px-6 md:px-12">
-            <div className="max-w-4xl">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+
+              {/* Left: headline */}
               <RevealBlock>
                 <p className="text-xs font-mono tracking-[0.2em] uppercase text-primary mb-8">
                   Let's Talk
                 </p>
                 <h2
-                  className="font-serif font-light leading-[1.05] mb-10"
+                  className="font-serif font-light leading-[1.05] mb-6"
                   style={{
                     fontFamily: "'Cormorant Garamond', Georgia, serif",
-                    fontSize: "clamp(3rem, 8vw, 7rem)",
+                    fontSize: "clamp(2.8rem, 6vw, 5.5rem)",
                   }}
                 >
                   Have an idea?<br />
                   <em className="italic gradient-text">Let's build it.</em>
                 </h2>
-                <p className="text-muted-foreground font-light text-base md:text-lg leading-relaxed mb-12 max-w-md">
-                  I'm open to new opportunities and collaborations. Whether you have a project in mind or just want to say hello — my inbox is open.
+                <p className="text-muted-foreground font-light text-base leading-relaxed max-w-sm">
+                  I'm open to new opportunities and collaborations. Whether you have a project in mind or just want to say hello — reach out any way you like.
                 </p>
-                <div className="flex flex-wrap items-center gap-5">
-                  <a href={`mailto:${ME.email}`} className="btn-primary">
-                    <Mail size={15} />
-                    <span>Send a Message</span>
-                  </a>
-                  <a href={ME.socials.linkedin} target="_blank" rel="noreferrer" className="btn-outline">
-                    <Linkedin size={15} />
-                    <span>Connect on LinkedIn</span>
-                  </a>
+              </RevealBlock>
+
+              {/* Right: contact details */}
+              <RevealBlock delay={0.15}>
+                <div className="space-y-0 mt-2">
+                  {[
+                    {
+                      icon: <MapPin size={16} />,
+                      label: "Location",
+                      value: ME.location,
+                      href: null,
+                    },
+                    {
+                      icon: <Mail size={16} />,
+                      label: "Email",
+                      value: ME.email,
+                      href: `mailto:${ME.email}`,
+                    },
+                    {
+                      icon: <Phone size={16} />,
+                      label: "Phone",
+                      value: ME.phone,
+                      href: `tel:${ME.phone}`,
+                    },
+                    {
+                      icon: <Send size={16} />,
+                      label: "Telegram",
+                      value: `@${ME.telegram}`,
+                      href: `https://t.me/${ME.telegram}`,
+                    },
+                    {
+                      icon: <Linkedin size={16} />,
+                      label: "LinkedIn",
+                      value: "amanu477",
+                      href: ME.socials.linkedin,
+                    },
+                    {
+                      icon: <Github size={16} />,
+                      label: "GitHub",
+                      value: "amanu477",
+                      href: ME.socials.github,
+                    },
+                  ].map(({ icon, label, value, href }) => (
+                    <div key={label} className="flex items-center gap-5 py-5 border-t border-border group">
+                      <span className="text-primary shrink-0">{icon}</span>
+                      <span className="text-xs font-mono tracking-widest uppercase text-muted-foreground w-20 shrink-0">{label}</span>
+                      {href ? (
+                        <a
+                          href={href}
+                          target={href.startsWith("http") ? "_blank" : undefined}
+                          rel={href.startsWith("http") ? "noreferrer" : undefined}
+                          className="hover-line text-sm font-light text-foreground hover:text-primary transition-colors pb-0.5"
+                        >
+                          {value}
+                        </a>
+                      ) : (
+                        <span className="text-sm font-light text-foreground">{value}</span>
+                      )}
+                    </div>
+                  ))}
+                  <div className="border-t border-border" />
                 </div>
               </RevealBlock>
+
             </div>
           </div>
         </section>
