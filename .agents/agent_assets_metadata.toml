@@ -1,0 +1,38 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "o2TfKTTXmBJcPkO2ovgVP"
+uri = "file://artifacts/portfolio/public/images/avatar.png"
+type = "image"
+title = "Developer avatar portrait"
+
+[[generated]]
+id = "m4mQb3nP2p5j5t7h0Y649"
+uri = "file://artifacts/portfolio/public/images/project-1.png"
+type = "image"
+title = "Abstract tech data streams"
+
+[[generated]]
+id = "iZSwEOShtI3_PRlTZTS03"
+uri = "file://artifacts/portfolio/public/images/project-2.png"
+type = "image"
+title = "Minimalist floating UI"
+
+[[generated]]
+id = "gkEvCqK9C0yzMaV5oOpqy"
+uri = "file://artifacts/portfolio/public/images/project-3.png"
+type = "image"
+title = "Global network visualization"
+
+[[generated]]
+id = "0d9ru5a3ZWAlyt8EEzlBk"
+uri = "file://artifacts/portfolio/public/images/project-4.png"
+type = "image"
+title = "Abstract glass code blocks"
+
+[[generated]]
+id = "NkHQX19PxevBu9keHPZyu"
+uri = "file://artifacts/portfolio/public/images/hero-bg.png"
+type = "image"
+title = "Dark abstract flowing lines"
