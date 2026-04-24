@@ -1,0 +1,28 @@
+19:45:15.271 
+failed to load config from /vercel/path0/artifacts/portfolio/vite.config.ts
+19:45:15.274 
+error during build:
+19:45:15.276 
+Error: PORT environment variable is required but was not provided.
+19:45:15.276 
+    at file:///vercel/path0/artifacts/portfolio/node_modules/.vite-temp/vite.config.ts.timestamp-1777049115150-b67541fc1d785.mjs:10:9
+19:45:15.277 
+    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)
+19:45:15.278 
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)
+19:45:15.278 
+    at async loadConfigFromBundledFile (file:///vercel/path0/node_modules/.pnpm/vite@7.3.2_@types+node@25.3.5_jiti@2.6.1_lightningcss@1.31.1_tsx@4.21.0_yaml@2.8.2/node_modules/vite/dist/node/chunks/config.js:35920:12)
+19:45:15.278 
+    at async bundleAndLoadConfigFile (file:///vercel/path0/node_modules/.pnpm/vite@7.3.2_@types+node@25.3.5_jiti@2.6.1_lightningcss@1.31.1_tsx@4.21.0_yaml@2.8.2/node_modules/vite/dist/node/chunks/config.js:35808:17)
+19:45:15.278 
+    at async loadConfigFromFile (file:///vercel/path0/node_modules/.pnpm/vite@7.3.2_@types+node@25.3.5_jiti@2.6.1_lightningcss@1.31.1_tsx@4.21.0_yaml@2.8.2/node_modules/vite/dist/node/chunks/config.js:35775:42)
+19:45:15.278 
+    at async resolveConfig (file:///vercel/path0/node_modules/.pnpm/vite@7.3.2_@types+node@25.3.5_jiti@2.6.1_lightningcss@1.31.1_tsx@4.21.0_yaml@2.8.2/node_modules/vite/dist/node/chunks/config.js:35424:22)
+19:45:15.278 
+    at async createBuilder (file:///vercel/path0/node_modules/.pnpm/vite@7.3.2_@types+node@25.3.5_jiti@2.6.1_lightningcss@1.31.1_tsx@4.21.0_yaml@2.8.2/node_modules/vite/dist/node/chunks/config.js:33879:19)
+19:45:15.278 
+    at async CAC.<anonymous> (file:///vercel/path0/node_modules/.pnpm/vite@7.3.2_@types+node@25.3.5_jiti@2.6.1_lightningcss@1.31.1_tsx@4.21.0_yaml@2.8.2/node_modules/vite/dist/node/cli.js:629:10)
+19:45:15.305 
+ ELIFECYCLE  Command failed with exit code 1.
+19:45:15.320 
+Error: Command "pnpm run build" exited with 1
