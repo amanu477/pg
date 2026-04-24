@@ -8,7 +8,7 @@ const ME = {
   name: "Amanu",
   role: "Full-Stack Developer",
   bio: "I craft end-to-end digital products — from thoughtful interfaces to resilient backends. Based in Addis Ababa, Ethiopia, building for the world.",
-  email: "amanu477@github.com",
+  email: "amanubekuma499@gmail.com",
   phone: "+251945961704",
   location: "Addis Ababa, Ethiopia",
   telegram: "yoakin4",
