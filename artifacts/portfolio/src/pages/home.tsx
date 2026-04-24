@@ -200,26 +200,14 @@ function ProjectRow({
                 </div>
               </div>
               <div className="flex flex-col sm:flex-row md:flex-col gap-3 md:items-end">
-                <motion.a
-                  href={p.demo}
-                  target="_blank"
-                  rel="noreferrer"
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
-                  className="inline-flex items-center gap-2 text-sm font-medium px-6 py-3 bg-primary text-primary-foreground rounded-none hover:opacity-90 transition-opacity"
-                >
-                  <ExternalLink size={14} /> Live Preview
-                </motion.a>
-                <motion.a
-                  href={p.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
-                  className="inline-flex items-center gap-2 text-sm font-medium px-6 py-3 border border-border rounded-none hover:bg-secondary transition-colors"
-                >
-                  <Github size={14} /> Source Code
-                </motion.a>
+                <a href={p.demo} target="_blank" rel="noreferrer" className="btn-primary">
+                  <ExternalLink size={14} />
+                  <span>Live Preview</span>
+                </a>
+                <a href={p.github} target="_blank" rel="noreferrer" className="btn-outline">
+                  <Github size={14} />
+                  <span>Source Code</span>
+                </a>
               </div>
             </div>
           </motion.div>
@@ -316,7 +304,10 @@ export default function Home() {
         >
           {/* Radial glow */}
           <div className="pointer-events-none absolute inset-0">
-            <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary/6 blur-[120px]" />
+            <div className="absolute top-1/3 right-1/4 -translate-y-1/2 w-[500px] h-[500px] rounded-full blur-[130px]"
+              style={{ background: "radial-gradient(circle, hsl(183 100% 50% / 0.12), hsl(200 90% 55% / 0.06) 50%, transparent 70%)" }} />
+            <div className="absolute bottom-1/4 left-1/4 w-[350px] h-[350px] rounded-full blur-[100px]"
+              style={{ background: "radial-gradient(circle, hsl(220 90% 65% / 0.08), transparent 70%)" }} />
           </div>
 
           <div className="max-w-7xl mx-auto px-6 md:px-12 w-full">
@@ -360,7 +351,7 @@ export default function Home() {
                     initial={{ y: "105%" }}
                     animate={{ y: 0 }}
                     transition={{ duration: 1, delay: 0.32, ease }}
-                    className="font-serif italic leading-[0.95] tracking-tight text-primary"
+                    className="font-serif italic leading-[0.95] tracking-tight gradient-text"
                     style={{
                       fontFamily: "'Cormorant Garamond', Georgia, serif",
                       fontSize: "clamp(3.6rem, 10vw, 8rem)",
@@ -401,22 +392,13 @@ export default function Home() {
                   transition={{ duration: 0.8, delay: 0.85, ease }}
                   className="flex flex-wrap items-center gap-4"
                 >
-                  <motion.button
-                    onClick={() => goto("projects")}
-                    whileHover={{ scale: 1.04 }}
-                    whileTap={{ scale: 0.96 }}
-                    className="px-8 py-3.5 bg-primary text-primary-foreground text-sm font-medium tracking-wide hover:opacity-90 transition-opacity"
-                  >
-                    View Work
-                  </motion.button>
-                  <motion.button
-                    onClick={() => goto("contact")}
-                    whileHover={{ scale: 1.04 }}
-                    whileTap={{ scale: 0.96 }}
-                    className="px-8 py-3.5 border border-border text-sm font-medium tracking-wide hover:bg-secondary transition-colors"
-                  >
-                    Get in Touch
-                  </motion.button>
+                  <button onClick={() => goto("projects")} className="btn-primary">
+                    <span>View Work</span>
+                    <ArrowUpRight size={15} />
+                  </button>
+                  <button onClick={() => goto("contact")} className="btn-outline">
+                    <span>Get in Touch</span>
+                  </button>
                 </motion.div>
               </motion.div>
 
@@ -431,9 +413,10 @@ export default function Home() {
                   transition={{ duration: 1, delay: 0.5, ease }}
                   className="relative"
                 >
-                  {/* Decorative ring */}
-                  <div className="absolute -inset-4 rounded-full border border-primary/20 animate-spin" style={{ animationDuration: "20s" }} />
-                  <div className="absolute -inset-8 rounded-full border border-primary/10 animate-spin" style={{ animationDuration: "35s", animationDirection: "reverse" }} />
+                  {/* Decorative rings */}
+                  <div className="absolute -inset-4 rounded-full animate-spin" style={{ animationDuration: "20s", border: "1px solid hsl(183 100% 50% / 0.25)" }} />
+                  <div className="absolute -inset-8 rounded-full animate-spin" style={{ animationDuration: "35s", animationDirection: "reverse", border: "1px solid hsl(200 90% 55% / 0.15)" }} />
+                  <div className="absolute -inset-14 rounded-full animate-spin" style={{ animationDuration: "60s", border: "1px dashed hsl(220 90% 65% / 0.10)" }} />
 
                   {/* Photo */}
                   <div className="relative w-[260px] h-[260px] xl:w-[310px] xl:h-[310px] rounded-full overflow-hidden glow">
@@ -528,8 +511,8 @@ export default function Home() {
                     }}
                   >
                     A developer who builds with{" "}
-                    <em className="italic text-primary">purpose</em> and{" "}
-                    <em className="italic text-primary">precision.</em>
+                    <em className="italic gradient-text">purpose</em> and{" "}
+                    <em className="italic gradient-text">precision.</em>
                   </h2>
                   <p className="text-muted-foreground font-light leading-relaxed text-base max-w-md">
                     {ME.bio} I reach for the right tools for the job — lately that's TypeScript and React, but the stack always follows the problem.
@@ -549,7 +532,7 @@ export default function Home() {
                         className={`py-6 text-center ${i !== 2 ? "border-r border-border" : ""}`}
                       >
                         <p
-                          className="font-serif text-4xl font-light text-primary mb-1"
+                          className="font-serif text-4xl font-light gradient-text mb-1"
                           style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
                         >
                           {s.num}
@@ -583,7 +566,7 @@ export default function Home() {
                     }}
                   >
                     Projects that<br />
-                    <em className="italic text-primary">speak for themselves.</em>
+                    <em className="italic gradient-text">speak for themselves.</em>
                   </h2>
                 </div>
                 <a
@@ -622,30 +605,20 @@ export default function Home() {
                   }}
                 >
                   Have an idea?<br />
-                  <em className="italic text-primary">Let's build it.</em>
+                  <em className="italic gradient-text">Let's build it.</em>
                 </h2>
                 <p className="text-muted-foreground font-light text-base md:text-lg leading-relaxed mb-12 max-w-md">
                   I'm open to new opportunities and collaborations. Whether you have a project in mind or just want to say hello — my inbox is open.
                 </p>
                 <div className="flex flex-wrap items-center gap-5">
-                  <motion.a
-                    href={`mailto:${ME.email}`}
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.97 }}
-                    className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-primary-foreground text-sm font-medium tracking-wide hover:opacity-90 transition-opacity"
-                  >
-                    <Mail size={15} /> Send a Message
-                  </motion.a>
-                  <motion.a
-                    href={ME.socials.linkedin}
-                    target="_blank"
-                    rel="noreferrer"
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.97 }}
-                    className="inline-flex items-center gap-3 px-8 py-4 border border-border text-sm font-medium tracking-wide hover:bg-secondary transition-colors"
-                  >
-                    <Linkedin size={15} /> Connect on LinkedIn
-                  </motion.a>
+                  <a href={`mailto:${ME.email}`} className="btn-primary">
+                    <Mail size={15} />
+                    <span>Send a Message</span>
+                  </a>
+                  <a href={ME.socials.linkedin} target="_blank" rel="noreferrer" className="btn-outline">
+                    <Linkedin size={15} />
+                    <span>Connect on LinkedIn</span>
+                  </a>
                 </div>
               </RevealBlock>
             </div>

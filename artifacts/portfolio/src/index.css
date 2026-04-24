@@ -52,30 +52,30 @@
 }
 
 :root {
-  --background: 0 0% 98%;
-  --foreground: 0 0% 4%;
-  --border: 0 0% 88%;
-  --input: 0 0% 88%;
-  --ring: 262 83% 68%;
+  --background: 210 20% 97%;
+  --foreground: 215 25% 8%;
+  --border: 210 15% 86%;
+  --input: 210 15% 86%;
+  --ring: 183 100% 38%;
 
-  --card: 0 0% 100%;
-  --card-foreground: 0 0% 4%;
-  --card-border: 0 0% 88%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 0 0% 4%;
-  --popover-border: 0 0% 88%;
+  --card: 210 20% 100%;
+  --card-foreground: 215 25% 8%;
+  --card-border: 210 15% 86%;
+  --popover: 210 20% 100%;
+  --popover-foreground: 215 25% 8%;
+  --popover-border: 210 15% 86%;
 
-  --primary: 262 70% 55%;
-  --primary-foreground: 0 0% 98%;
+  --primary: 183 100% 35%;
+  --primary-foreground: 0 0% 100%;
 
-  --secondary: 0 0% 94%;
-  --secondary-foreground: 0 0% 4%;
+  --secondary: 210 15% 92%;
+  --secondary-foreground: 215 25% 8%;
 
-  --muted: 0 0% 94%;
-  --muted-foreground: 0 0% 45%;
+  --muted: 210 15% 92%;
+  --muted-foreground: 215 12% 42%;
 
-  --accent: 262 70% 55%;
-  --accent-foreground: 0 0% 98%;
+  --accent: 200 90% 48%;
+  --accent-foreground: 0 0% 100%;
 
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 98%;
@@ -86,36 +86,44 @@
   --app-font-display: 'Cormorant Garamond', Georgia, serif;
 
   --radius: 0.125rem;
+
+  --cyan: 183 100% 35%;
+  --cyan-bright: 183 100% 50%;
+  --blue: 217 91% 60%;
 }
 
 .dark {
-  --background: 0 0% 3%;
-  --foreground: 0 0% 95%;
-  --border: 0 0% 12%;
-  --input: 0 0% 12%;
-  --ring: 262 83% 68%;
+  --background: 216 28% 5%;
+  --foreground: 200 15% 93%;
+  --border: 215 20% 13%;
+  --input: 215 20% 13%;
+  --ring: 183 100% 50%;
 
-  --card: 0 0% 5%;
-  --card-foreground: 0 0% 95%;
-  --card-border: 0 0% 12%;
-  --popover: 0 0% 5%;
-  --popover-foreground: 0 0% 95%;
-  --popover-border: 0 0% 12%;
+  --card: 216 28% 7%;
+  --card-foreground: 200 15% 93%;
+  --card-border: 215 20% 13%;
+  --popover: 216 28% 7%;
+  --popover-foreground: 200 15% 93%;
+  --popover-border: 215 20% 13%;
 
-  --primary: 262 83% 72%;
-  --primary-foreground: 0 0% 3%;
+  --primary: 183 100% 50%;
+  --primary-foreground: 216 28% 5%;
 
-  --secondary: 0 0% 8%;
-  --secondary-foreground: 0 0% 95%;
+  --secondary: 215 22% 10%;
+  --secondary-foreground: 200 15% 93%;
 
-  --muted: 0 0% 8%;
-  --muted-foreground: 0 0% 55%;
+  --muted: 215 22% 10%;
+  --muted-foreground: 215 15% 55%;
 
-  --accent: 262 83% 72%;
-  --accent-foreground: 0 0% 3%;
+  --accent: 200 90% 55%;
+  --accent-foreground: 216 28% 5%;
 
   --destructive: 0 62% 30%;
-  --destructive-foreground: 0 0% 95%;
+  --destructive-foreground: 200 15% 93%;
+
+  --cyan: 183 100% 50%;
+  --cyan-bright: 183 100% 62%;
+  --blue: 217 91% 65%;
 }
 
 @layer base {
@@ -160,10 +168,97 @@
 
 /* ── Accent glow ── */
 .glow {
-  box-shadow: 0 0 40px 8px hsl(262 83% 72% / 0.22);
+  box-shadow: 0 0 40px 8px hsl(183 100% 38% / 0.25), 0 0 80px 20px hsl(200 90% 48% / 0.10);
 }
 .dark .glow {
-  box-shadow: 0 0 60px 12px hsl(262 83% 72% / 0.28);
+  box-shadow: 0 0 50px 12px hsl(183 100% 50% / 0.35), 0 0 100px 30px hsl(200 90% 55% / 0.12);
+}
+
+/* ── Cool gradient text ── */
+.gradient-text {
+  background: linear-gradient(135deg, hsl(183 100% 50%) 0%, hsl(200 90% 60%) 50%, hsl(220 90% 65%) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Btn primary (glowing cyan) ── */
+.btn-primary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: hsl(216 28% 5%);
+  background: linear-gradient(135deg, hsl(183 100% 50%) 0%, hsl(200 90% 55%) 100%);
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, hsl(183 100% 62%) 0%, hsl(200 90% 68%) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px hsl(183 100% 50% / 0.45), 0 2px 8px hsl(183 100% 50% / 0.25);
+}
+.btn-primary:hover::before { opacity: 1; }
+.btn-primary:active { transform: translateY(0); }
+.btn-primary > * { position: relative; z-index: 1; }
+
+/* ── Btn outline (cool border) ── */
+.btn-outline {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: hsl(var(--foreground));
+  background: transparent;
+  border: 1px solid hsl(183 100% 50% / 0.4);
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.2s ease, color 0.3s ease, border-color 0.3s ease;
+}
+.btn-outline::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, hsl(183 100% 50% / 0.12) 0%, hsl(200 90% 55% / 0.08) 100%);
+  transform: translateX(-100%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-outline:hover {
+  transform: translateY(-2px);
+  border-color: hsl(183 100% 50% / 0.8);
+  color: hsl(var(--primary));
+}
+.btn-outline:hover::before { transform: translateX(0); }
+.btn-outline:active { transform: translateY(0); }
+
+/* light-mode adjustments */
+:root .btn-primary { color: #fff; }
+
+/* ── Floating ring spin ── */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes spin-slow-rev {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(-360deg); }
 }
 
 /* ── Hover underline ── */
