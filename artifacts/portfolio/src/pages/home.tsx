@@ -498,122 +498,136 @@ export default function Home() {
         </div>
 
         {/* ── About ───────────────────────────────────────────── */}
-        <section id="about" className="py-32 md:py-40">
+        <section id="about" className="py-32 md:py-40 overflow-hidden">
           <div className="max-w-7xl mx-auto px-6 md:px-12">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-              {/* Profile card */}
-              <RevealBlock className="lg:sticky lg:top-8">
-                <div className="relative max-w-md mx-auto lg:mx-0">
-                  {/* Corner decorations */}
-                  <div className="absolute -top-3 -left-3 w-12 h-12 border-t border-l border-primary" />
-                  <div className="absolute -bottom-3 -right-3 w-12 h-12 border-b border-r border-primary" />
 
-                  <div className="aspect-[4/5] overflow-hidden bg-secondary relative">
+            {/* ① Section label */}
+            <RevealBlock>
+              <p className="text-xs font-mono tracking-[0.2em] uppercase text-primary mb-6">About</p>
+            </RevealBlock>
+
+            {/* ② Full-width pull-quote bio */}
+            <RevealBlock delay={0.08}>
+              <div className="border-t border-border pt-10 mb-16 md:mb-24">
+                <p
+                  className="font-serif font-light leading-[1.2] max-w-5xl"
+                  style={{
+                    fontFamily: "'Cormorant Garamond', Georgia, serif",
+                    fontSize: "clamp(1.9rem, 4.2vw, 3.6rem)",
+                  }}
+                >
+                  A developer who builds with{" "}
+                  <em className="italic gradient-text">purpose</em> and{" "}
+                  <em className="italic gradient-text">precision</em> —
+                  shipping products that actually work.
+                </p>
+              </div>
+            </RevealBlock>
+
+            {/* ③ Photo + right-side detail */}
+            <div className="grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-12 lg:gap-16 items-start mb-20">
+
+              {/* Photo */}
+              <RevealBlock>
+                <div className="relative">
+                  <div className="absolute -top-3 -left-3 w-10 h-10 border-t border-l border-primary" />
+                  <div className="absolute -bottom-3 -right-3 w-10 h-10 border-b border-r border-primary" />
+                  <div className="aspect-[3/4] overflow-hidden bg-secondary">
                     <img
                       src={ME.avatar}
                       alt={ME.name}
                       className="w-full h-full object-cover object-top transition-transform duration-700 hover:scale-105"
                     />
-                    {/* Name overlay */}
-                    <div className="absolute bottom-0 inset-x-0 p-6 bg-gradient-to-t from-background/80 to-transparent">
-                      <p className="font-serif text-2xl font-light"
-                        style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
-                        {ME.name}
-                      </p>
-                      <p className="text-xs font-mono tracking-widest uppercase text-primary mt-1">
-                        {ME.role}
-                      </p>
-                    </div>
+                  </div>
+                  {/* Floating badge */}
+                  <div className="absolute -bottom-5 -right-5 bg-background border border-border px-4 py-3">
+                    <p className="text-[10px] font-mono tracking-widest uppercase text-muted-foreground">B.Sc. Computer Science</p>
+                    <p className="text-xs font-light text-foreground mt-0.5">ACT American College</p>
                   </div>
                 </div>
               </RevealBlock>
 
-              {/* Bio + stats */}
-              <div className="space-y-10">
+              {/* Right detail column */}
+              <div className="space-y-8 pt-2">
+
+                {/* Bio text */}
                 <RevealBlock delay={0.1}>
-                  <p className="text-xs font-mono tracking-[0.2em] uppercase text-primary mb-6">About</p>
-                  <h2
-                    className="font-serif font-light leading-[1.15] mb-6"
-                    style={{
-                      fontFamily: "'Cormorant Garamond', Georgia, serif",
-                      fontSize: "clamp(2rem, 4vw, 3.2rem)",
-                    }}
-                  >
-                    A developer who builds with{" "}
-                    <em className="italic gradient-text">purpose</em> and{" "}
-                    <em className="italic gradient-text">precision.</em>
-                  </h2>
-                  <p className="text-muted-foreground font-light leading-relaxed text-base max-w-md">
+                  <p className="text-muted-foreground font-light leading-relaxed text-[15px]">
                     {ME.aboutBio}
                   </p>
                 </RevealBlock>
 
-                {/* Skills */}
+                {/* Stats row */}
                 <RevealBlock delay={0.15}>
-                  <p className="text-xs font-mono tracking-[0.2em] uppercase text-primary mb-5">Skills</p>
-                  <div className="space-y-5">
-                    {SKILL_GROUPS.map((group) => (
-                      <div key={group.label} className="flex gap-4 items-start border-t border-border pt-4">
-                        <span className="text-[10px] font-mono tracking-widest uppercase text-muted-foreground w-20 shrink-0 pt-0.5">
-                          {group.label}
-                        </span>
-                        <div className="flex flex-wrap gap-2">
-                          {group.items.map((item) => (
-                            <span
-                              key={item}
-                              className="text-xs font-mono px-2.5 py-1 border border-border text-foreground/70 hover:border-primary hover:text-primary transition-colors"
-                            >
-                              {item}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                    <div className="border-t border-border" />
-                  </div>
-                </RevealBlock>
-
-                {/* Languages */}
-                <RevealBlock delay={0.2}>
-                  <p className="text-xs font-mono tracking-[0.2em] uppercase text-primary mb-5">Languages</p>
-                  <div className="space-y-0">
-                    {LANGUAGES.map(({ lang, level }) => (
-                      <div key={lang} className="flex items-center justify-between border-t border-border py-3">
-                        <span className="text-sm font-light text-foreground">{lang}</span>
-                        <span className="text-[10px] font-mono tracking-widest uppercase text-primary">{level}</span>
-                      </div>
-                    ))}
-                    <div className="border-t border-border" />
-                  </div>
-                </RevealBlock>
-
-                {/* Stats */}
-                <RevealBlock delay={0.25}>
-                  <div className="grid grid-cols-3 gap-0 border border-border">
+                  <div className="grid grid-cols-3 divide-x divide-border border border-border">
                     {[
-                      { num: "5+",  label: "Projects" },
-                      { num: "3+",  label: "Years" },
-                      { num: "∞",   label: "Commits" },
-                    ].map((s, i) => (
-                      <div
-                        key={s.label}
-                        className={`py-6 text-center ${i !== 2 ? "border-r border-border" : ""}`}
-                      >
+                      { num: "5+", label: "Projects" },
+                      { num: "3+", label: "Years" },
+                      { num: "∞",  label: "Commits" },
+                    ].map((s) => (
+                      <div key={s.label} className="py-5 text-center">
                         <p
-                          className="font-serif text-4xl font-light gradient-text mb-1"
+                          className="font-serif text-3xl font-light gradient-text mb-0.5"
                           style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
                         >
                           {s.num}
                         </p>
-                        <p className="text-xs font-mono tracking-widest uppercase text-muted-foreground">
+                        <p className="text-[10px] font-mono tracking-widest uppercase text-muted-foreground">
                           {s.label}
                         </p>
                       </div>
                     ))}
                   </div>
                 </RevealBlock>
+
+                {/* Languages */}
+                <RevealBlock delay={0.2}>
+                  <p className="text-xs font-mono tracking-[0.2em] uppercase text-primary mb-4">Languages</p>
+                  <div className="grid grid-cols-3 gap-3">
+                    {LANGUAGES.map(({ lang, level }) => (
+                      <div key={lang} className="border border-border p-4 group hover:border-primary transition-colors">
+                        <p className="text-sm font-light text-foreground mb-1 group-hover:text-primary transition-colors">{lang}</p>
+                        <p className="text-[10px] font-mono tracking-widest uppercase text-muted-foreground">{level}</p>
+                      </div>
+                    ))}
+                  </div>
+                </RevealBlock>
+
               </div>
             </div>
+
+            {/* ④ Skills bento grid */}
+            <RevealBlock delay={0.1}>
+              <p className="text-xs font-mono tracking-[0.2em] uppercase text-primary mb-6">Skills</p>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {SKILL_GROUPS.map((group, gi) => (
+                  <div
+                    key={group.label}
+                    className={`border border-border p-6 hover:border-primary/50 transition-colors group ${gi === 0 ? "md:col-span-2" : ""}`}
+                  >
+                    {/* Group header */}
+                    <div className="flex items-center gap-3 mb-5">
+                      <span className="text-primary text-lg leading-none select-none">✦</span>
+                      <span className="text-xs font-mono tracking-widest uppercase text-muted-foreground">
+                        {group.label}
+                      </span>
+                    </div>
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-2">
+                      {group.items.map((item) => (
+                        <span
+                          key={item}
+                          className="text-xs font-mono px-3 py-1.5 bg-secondary/60 text-foreground/80 group-hover:text-foreground transition-colors"
+                        >
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </RevealBlock>
+
           </div>
         </section>
 
