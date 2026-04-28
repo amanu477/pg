@@ -589,7 +589,7 @@ export default function Home() {
                 <div className="relative">
                   <div className="absolute -top-3 -left-3 w-10 h-10 border-t border-l border-primary" />
                   <div className="absolute -bottom-3 -right-3 w-10 h-10 border-b border-r border-primary" />
-                  <div className="aspect-[3/4] overflow-hidden bg-secondary">
+                  <div className="aspect-[3/4] max-h-[380px] overflow-hidden bg-secondary">
                     <img
                       src={ME.avatar}
                       alt={ME.name}
