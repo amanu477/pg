@@ -243,6 +243,7 @@ function ProjectRow({
 /* ─── Main component ───────────────────────────────────────── */
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const heroRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -315,9 +316,63 @@ export default function Home() {
               <Github size={17} />
             </a>
             <ThemeToggle />
+            {/* Hamburger — mobile only */}
+            <button
+              className="md:hidden flex flex-col justify-center gap-[5px] w-7 h-7 shrink-0"
+              onClick={() => setMobileMenuOpen((v) => !v)}
+              aria-label="Toggle menu"
+            >
+              <motion.span
+                animate={{ rotate: mobileMenuOpen ? 45 : 0, y: mobileMenuOpen ? 7 : 0 }}
+                className="block h-px w-full bg-foreground origin-center"
+              />
+              <motion.span
+                animate={{ opacity: mobileMenuOpen ? 0 : 1 }}
+                className="block h-px w-full bg-foreground"
+              />
+              <motion.span
+                animate={{ rotate: mobileMenuOpen ? -45 : 0, y: mobileMenuOpen ? -7 : 0 }}
+                className="block h-px w-full bg-foreground origin-center"
+              />
+            </button>
           </div>
         </div>
       </motion.header>
+
+      {/* ── Mobile menu overlay ─────────────────────────────── */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.25, ease }}
+            className="fixed inset-x-0 top-[60px] z-40 bg-background/95 backdrop-blur-xl border-b border-border md:hidden"
+          >
+            <nav className="flex flex-col px-6 py-6 gap-1">
+              {[
+                { label: "About",   id: "about"    },
+                { label: "Work",    id: "projects" },
+                { label: "Contact", id: "contact"  },
+              ].map(({ label, id }) => (
+                <button
+                  key={id}
+                  onClick={() => { goto(id); setMobileMenuOpen(false); }}
+                  className="text-left py-3 text-lg font-serif font-light border-b border-border/50 text-foreground hover:text-primary transition-colors"
+                  style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
+                >
+                  {label}
+                </button>
+              ))}
+              <div className="flex items-center gap-5 pt-4">
+                <a href={ME.socials.github} target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-foreground transition-colors text-xs font-mono tracking-widest uppercase">GitHub</a>
+                <a href={ME.socials.linkedin} target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-foreground transition-colors text-xs font-mono tracking-widest uppercase">LinkedIn</a>
+                <a href={`mailto:${ME.email}`} className="text-muted-foreground hover:text-foreground transition-colors text-xs font-mono tracking-widest uppercase">Email</a>
+              </div>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <main>
         {/* ── Hero ───────────────────────────────────────────── */}
@@ -343,7 +398,7 @@ export default function Home() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7, delay: 0.1, ease }}
-                  className="flex items-center gap-3 mb-8"
+                  className="flex items-center gap-3 mb-5 md:mb-8"
                 >
                   <div className="h-px w-8 bg-primary" />
                   <span className="text-[11px] font-mono tracking-[0.25em] uppercase text-primary">
@@ -352,7 +407,7 @@ export default function Home() {
                 </motion.div>
 
                 {/* Name */}
-                <div className="mb-6">
+                <div className="mb-4 md:mb-6">
                   <div className="overflow-hidden">
                     <motion.h1
                       initial={{ y: "105%" }}
@@ -361,7 +416,7 @@ export default function Home() {
                       className="font-serif leading-[0.92] tracking-tight"
                       style={{
                         fontFamily: "'Cormorant Garamond', Georgia, serif",
-                        fontSize: "clamp(4rem, 11vw, 9rem)",
+                        fontSize: "clamp(3.2rem, 11vw, 9rem)",
                         fontWeight: 300,
                       }}
                     >
@@ -376,7 +431,7 @@ export default function Home() {
                       className="font-serif italic leading-[0.92] tracking-tight gradient-text"
                       style={{
                         fontFamily: "'Cormorant Garamond', Georgia, serif",
-                        fontSize: "clamp(4rem, 11vw, 9rem)",
+                        fontSize: "clamp(3.2rem, 11vw, 9rem)",
                         fontWeight: 300,
                       }}
                     >
@@ -391,7 +446,7 @@ export default function Home() {
                   animate={{ opacity: 1, scaleX: 1 }}
                   transition={{ duration: 0.8, delay: 0.55, ease }}
                   style={{ originX: 0 }}
-                  className="flex items-center gap-4 mb-8"
+                  className="flex items-center gap-4 mb-5 md:mb-8"
                 >
                   <div className="h-px flex-1 max-w-[60px] bg-border" />
                   <span className="text-xs font-mono tracking-[0.2em] uppercase text-muted-foreground">
@@ -410,7 +465,7 @@ export default function Home() {
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.7, ease }}
-                  className="text-muted-foreground font-light leading-relaxed max-w-sm mb-10 text-base"
+                  className="text-muted-foreground font-light leading-relaxed max-w-sm mb-6 md:mb-10 text-base"
                 >
                   {ME.bio}
                 </motion.p>
@@ -498,7 +553,7 @@ export default function Home() {
         </div>
 
         {/* ── About ───────────────────────────────────────────── */}
-        <section id="about" className="py-32 md:py-40 overflow-hidden">
+        <section id="about" className="py-16 md:py-40 overflow-hidden">
           <div className="max-w-7xl mx-auto px-6 md:px-12">
 
             {/* ① Section label */}
@@ -508,12 +563,12 @@ export default function Home() {
 
             {/* ② Full-width pull-quote bio */}
             <RevealBlock delay={0.08}>
-              <div className="border-t border-border pt-10 mb-16 md:mb-24">
+              <div className="border-t border-border pt-8 mb-10 md:mb-20">
                 <p
                   className="font-serif font-light leading-[1.2] max-w-5xl"
                   style={{
                     fontFamily: "'Cormorant Garamond', Georgia, serif",
-                    fontSize: "clamp(1.9rem, 4.2vw, 3.6rem)",
+                    fontSize: "clamp(1.5rem, 4.2vw, 3.6rem)",
                   }}
                 >
                   A developer who builds with{" "}
@@ -525,14 +580,14 @@ export default function Home() {
             </RevealBlock>
 
             {/* ③ Photo + right-side detail */}
-            <div className="grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-12 lg:gap-16 items-start mb-20">
+            <div className="grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-10 lg:gap-16 items-start mb-10 md:mb-20">
 
               {/* Photo */}
               <RevealBlock>
                 <div className="relative">
                   <div className="absolute -top-3 -left-3 w-10 h-10 border-t border-l border-primary" />
                   <div className="absolute -bottom-3 -right-3 w-10 h-10 border-b border-r border-primary" />
-                  <div className="aspect-[3/4] overflow-hidden bg-secondary">
+                  <div className="aspect-[3/4] max-h-[420px] lg:max-h-none overflow-hidden bg-secondary">
                     <img
                       src={ME.avatar}
                       alt={ME.name}
@@ -540,7 +595,7 @@ export default function Home() {
                     />
                   </div>
                   {/* Floating badge */}
-                  <div className="absolute -bottom-5 -right-5 bg-background border border-border px-4 py-3">
+                  <div className="absolute bottom-4 right-4 bg-background/90 backdrop-blur-sm border border-border px-3 py-2.5">
                     <p className="text-[10px] font-mono tracking-widest uppercase text-muted-foreground">B.Sc. Computer Science</p>
                     <p className="text-xs font-light text-foreground mt-0.5">ACT American College</p>
                   </div>
@@ -548,7 +603,7 @@ export default function Home() {
               </RevealBlock>
 
               {/* Right detail column */}
-              <div className="space-y-8 pt-2">
+              <div className="space-y-6 md:space-y-8 pt-0 md:pt-2">
 
                 {/* Bio text */}
                 <RevealBlock delay={0.1}>
@@ -632,9 +687,9 @@ export default function Home() {
         </section>
 
         {/* ── Projects ────────────────────────────────────────── */}
-        <section id="projects" className="py-32 md:py-40 border-t border-border">
+        <section id="projects" className="py-16 md:py-40 border-t border-border">
           <div className="max-w-7xl mx-auto px-6 md:px-12">
-            <RevealBlock className="mb-20">
+            <RevealBlock className="mb-12 md:mb-20">
               <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
                 <div>
                   <p className="text-xs font-mono tracking-[0.2em] uppercase text-primary mb-4">
@@ -672,20 +727,20 @@ export default function Home() {
         </section>
 
         {/* ── Contact ─────────────────────────────────────────── */}
-        <section id="contact" className="py-32 md:py-40 bg-secondary/20 border-t border-border">
+        <section id="contact" className="py-16 md:py-40 bg-secondary/20 border-t border-border">
           <div className="max-w-7xl mx-auto px-6 md:px-12">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-24">
 
               {/* Left: headline */}
               <RevealBlock>
-                <p className="text-xs font-mono tracking-[0.2em] uppercase text-primary mb-8">
+                <p className="text-xs font-mono tracking-[0.2em] uppercase text-primary mb-5">
                   Let's Talk
                 </p>
                 <h2
-                  className="font-serif font-light leading-[1.05] mb-6"
+                  className="font-serif font-light leading-[1.05] mb-5"
                   style={{
                     fontFamily: "'Cormorant Garamond', Georgia, serif",
-                    fontSize: "clamp(2.8rem, 6vw, 5.5rem)",
+                    fontSize: "clamp(2.2rem, 6vw, 5.5rem)",
                   }}
                 >
                   Have an idea?<br />
@@ -737,20 +792,20 @@ export default function Home() {
                       href: ME.socials.github,
                     },
                   ].map(({ icon, label, value, href }) => (
-                    <div key={label} className="flex items-center gap-5 py-5 border-t border-border group">
-                      <span className="text-primary shrink-0">{icon}</span>
-                      <span className="text-xs font-mono tracking-widest uppercase text-muted-foreground w-20 shrink-0">{label}</span>
+                    <div key={label} className="flex items-start gap-4 py-4 border-t border-border group">
+                      <span className="text-primary shrink-0 mt-0.5">{icon}</span>
+                      <span className="text-[10px] font-mono tracking-widest uppercase text-muted-foreground w-16 shrink-0 mt-0.5">{label}</span>
                       {href ? (
                         <a
                           href={href}
                           target={href.startsWith("http") ? "_blank" : undefined}
                           rel={href.startsWith("http") ? "noreferrer" : undefined}
-                          className="hover-line text-sm font-light text-foreground hover:text-primary transition-colors pb-0.5"
+                          className="hover-line text-sm font-light text-foreground hover:text-primary transition-colors pb-0.5 break-all"
                         >
                           {value}
                         </a>
                       ) : (
-                        <span className="text-sm font-light text-foreground">{value}</span>
+                        <span className="text-sm font-light text-foreground break-all">{value}</span>
                       )}
                     </div>
                   ))}
