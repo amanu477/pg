@@ -378,7 +378,7 @@ export default function Home() {
         {/* ── Hero ───────────────────────────────────────────── */}
         <section
           ref={heroRef}
-          className="relative min-h-[100dvh] flex items-center pt-24 pb-16 overflow-hidden"
+          className="relative min-h-[100dvh] flex flex-col justify-between pt-24 pb-0 overflow-hidden"
         >
           {/* Radial glow */}
           <div className="pointer-events-none absolute inset-0">
@@ -388,8 +388,8 @@ export default function Home() {
               style={{ background: "radial-gradient(circle, hsl(235 80% 68% / 0.08), transparent 70%)" }} />
           </div>
 
-          <div className="max-w-7xl mx-auto px-6 md:px-12 w-full">
-            <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-12 lg:gap-20 items-center">
+          <div className="max-w-7xl mx-auto px-6 md:px-12 w-full flex-1 flex items-center py-12">
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-12 lg:gap-20 items-center w-full">
 
               {/* Text */}
               <motion.div style={{ opacity: heroOpacity, y: heroY }}>
@@ -536,6 +536,30 @@ export default function Home() {
               </motion.div>
             </div>
           </div>
+
+          {/* ── Hero bottom bar ──────────────────────────────── */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 1.1, ease }}
+            className="border-t border-border/40 w-full"
+          >
+            <div className="max-w-7xl mx-auto px-6 md:px-12 py-4 flex items-center justify-between gap-4">
+              <div className="flex items-center gap-6 text-[11px] font-mono tracking-widest uppercase text-muted-foreground">
+                <span className="flex items-center gap-2">
+                  <MapPin size={11} className="text-primary" />
+                  {ME.location}
+                </span>
+                <span className="hidden sm:block text-border">·</span>
+                <span className="hidden sm:block">Available for work</span>
+              </div>
+              <div className="flex items-center gap-5">
+                <a href={ME.socials.github} target="_blank" rel="noreferrer" className="text-[11px] font-mono tracking-widest uppercase text-muted-foreground hover:text-foreground transition-colors">GitHub</a>
+                <a href={ME.socials.linkedin} target="_blank" rel="noreferrer" className="text-[11px] font-mono tracking-widest uppercase text-muted-foreground hover:text-foreground transition-colors">LinkedIn</a>
+                <a href={`mailto:${ME.email}`} className="text-[11px] font-mono tracking-widest uppercase text-muted-foreground hover:text-foreground transition-colors">Email</a>
+              </div>
+            </div>
+          </motion.div>
         </section>
 
         {/* ── Marquee ─────────────────────────────────────────── */}
@@ -553,95 +577,114 @@ export default function Home() {
         </div>
 
         {/* ── About ───────────────────────────────────────────── */}
-        <section id="about" className="py-16 md:py-40 overflow-hidden">
+        <section id="about" className="py-16 md:py-32 overflow-hidden">
           <div className="max-w-7xl mx-auto px-6 md:px-12">
 
-            {/* ① Section label */}
-            <RevealBlock>
-              <p className="text-xs font-mono tracking-[0.2em] uppercase text-primary mb-6">About</p>
-            </RevealBlock>
+            {/* Two-column: sticky photo left, all content right */}
+            <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-12 lg:gap-20 items-start">
 
-            {/* ② Full-width pull-quote bio */}
-            <RevealBlock delay={0.08}>
-              <div className="border-t border-border pt-8 mb-10 md:mb-20">
-                <p
-                  className="font-serif font-light leading-[1.2] max-w-5xl"
-                  style={{
-                    fontFamily: "'Cormorant Garamond', Georgia, serif",
-                    fontSize: "clamp(1.5rem, 4.2vw, 3.6rem)",
-                  }}
-                >
-                  A developer who builds with{" "}
-                  <em className="italic gradient-text">purpose</em> and{" "}
-                  <em className="italic gradient-text">precision</em> —
-                  shipping products that actually work.
-                </p>
-              </div>
-            </RevealBlock>
-
-            {/* ③ Photo + right-side detail */}
-            <div className="grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-10 lg:gap-16 items-start mb-10 md:mb-20">
-
-              {/* Photo */}
-              <RevealBlock>
+              {/* ── LEFT: Photo ─────────────────────────────── */}
+              <RevealBlock className="lg:sticky lg:top-24">
+                <p className="text-xs font-mono tracking-[0.2em] uppercase text-primary mb-6">About</p>
                 <div className="relative">
                   <div className="absolute -top-3 -left-3 w-10 h-10 border-t border-l border-primary" />
                   <div className="absolute -bottom-3 -right-3 w-10 h-10 border-b border-r border-primary" />
-                  <div className="aspect-[3/4] max-h-[420px] lg:max-h-none overflow-hidden bg-secondary">
+                  <div className="aspect-[3/4] overflow-hidden bg-secondary">
                     <img
                       src={ME.avatar}
                       alt={ME.name}
                       className="w-full h-full object-cover object-top transition-transform duration-700 hover:scale-105"
                     />
                   </div>
-                  {/* Floating badge */}
-                  <div className="absolute bottom-4 right-4 bg-background/90 backdrop-blur-sm border border-border px-3 py-2.5">
-                    <p className="text-[10px] font-mono tracking-widest uppercase text-muted-foreground">B.Sc. Computer Science</p>
-                    <p className="text-xs font-light text-foreground mt-0.5">ACT American College</p>
+                  {/* Name overlay */}
+                  <div className="absolute bottom-0 inset-x-0 p-5 bg-gradient-to-t from-background/90 to-transparent">
+                    <p className="font-serif text-xl font-light" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
+                      {ME.name}
+                    </p>
+                    <p className="text-[10px] font-mono tracking-widest uppercase text-primary mt-1">{ME.role}</p>
                   </div>
+                  {/* Education badge */}
+                  <div className="absolute top-4 right-4 bg-background/90 backdrop-blur-sm border border-border px-3 py-2">
+                    <p className="text-[10px] font-mono tracking-wider uppercase text-muted-foreground">B.Sc. CS</p>
+                    <p className="text-[11px] font-light text-foreground mt-0.5">ACT American College</p>
+                  </div>
+                </div>
+
+                {/* Stats below photo */}
+                <div className="grid grid-cols-3 divide-x divide-border border border-border mt-6">
+                  {[
+                    { num: "5+", label: "Projects" },
+                    { num: "3+", label: "Years" },
+                    { num: "∞",  label: "Commits" },
+                  ].map((s) => (
+                    <div key={s.label} className="py-5 text-center">
+                      <p className="font-serif text-3xl font-light gradient-text mb-0.5"
+                        style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
+                        {s.num}
+                      </p>
+                      <p className="text-[10px] font-mono tracking-widest uppercase text-muted-foreground">{s.label}</p>
+                    </div>
+                  ))}
                 </div>
               </RevealBlock>
 
-              {/* Right detail column */}
-              <div className="space-y-6 md:space-y-8 pt-0 md:pt-2">
+              {/* ── RIGHT: All content ───────────────────────── */}
+              <div className="space-y-12">
 
-                {/* Bio text */}
-                <RevealBlock delay={0.1}>
-                  <p className="text-muted-foreground font-light leading-relaxed text-[15px]">
+                {/* Pull-quote */}
+                <RevealBlock delay={0.08}>
+                  <div className="border-t border-border pt-8">
+                    <p
+                      className="font-serif font-light leading-[1.2]"
+                      style={{
+                        fontFamily: "'Cormorant Garamond', Georgia, serif",
+                        fontSize: "clamp(1.6rem, 3vw, 2.8rem)",
+                      }}
+                    >
+                      A developer who builds with{" "}
+                      <em className="italic gradient-text">purpose</em> and{" "}
+                      <em className="italic gradient-text">precision</em> —
+                      shipping products that actually work.
+                    </p>
+                  </div>
+                </RevealBlock>
+
+                {/* Bio */}
+                <RevealBlock delay={0.12}>
+                  <p className="text-muted-foreground font-light leading-relaxed text-[15px] border-l-2 border-primary/40 pl-5">
                     {ME.aboutBio}
                   </p>
                 </RevealBlock>
 
-                {/* Stats row */}
-                <RevealBlock delay={0.15}>
-                  <div className="grid grid-cols-3 divide-x divide-border border border-border">
-                    {[
-                      { num: "5+", label: "Projects" },
-                      { num: "3+", label: "Years" },
-                      { num: "∞",  label: "Commits" },
-                    ].map((s) => (
-                      <div key={s.label} className="py-5 text-center">
-                        <p
-                          className="font-serif text-3xl font-light gradient-text mb-0.5"
-                          style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
-                        >
-                          {s.num}
-                        </p>
-                        <p className="text-[10px] font-mono tracking-widest uppercase text-muted-foreground">
-                          {s.label}
-                        </p>
+                {/* Skills */}
+                <RevealBlock delay={0.16}>
+                  <p className="text-xs font-mono tracking-[0.2em] uppercase text-primary mb-5">Skills</p>
+                  <div className="space-y-0">
+                    {SKILL_GROUPS.map((group) => (
+                      <div key={group.label} className="border-t border-border py-5 flex gap-6 items-start group hover:bg-secondary/20 transition-colors px-2 -mx-2">
+                        <span className="text-[10px] font-mono tracking-widest uppercase text-primary w-20 shrink-0 pt-1">
+                          {group.label}
+                        </span>
+                        <div className="flex flex-wrap gap-2">
+                          {group.items.map((item) => (
+                            <span key={item} className="text-xs font-mono px-3 py-1.5 bg-secondary/50 text-foreground/80 group-hover:text-foreground transition-colors">
+                              {item}
+                            </span>
+                          ))}
+                        </div>
                       </div>
                     ))}
+                    <div className="border-t border-border" />
                   </div>
                 </RevealBlock>
 
                 {/* Languages */}
                 <RevealBlock delay={0.2}>
-                  <p className="text-xs font-mono tracking-[0.2em] uppercase text-primary mb-4">Languages</p>
+                  <p className="text-xs font-mono tracking-[0.2em] uppercase text-primary mb-5">Languages</p>
                   <div className="grid grid-cols-3 gap-3">
                     {LANGUAGES.map(({ lang, level }) => (
-                      <div key={lang} className="border border-border p-4 group hover:border-primary transition-colors">
-                        <p className="text-sm font-light text-foreground mb-1 group-hover:text-primary transition-colors">{lang}</p>
+                      <div key={lang} className="border border-border p-5 group hover:border-primary transition-colors">
+                        <p className="text-sm font-light text-foreground mb-1.5 group-hover:text-primary transition-colors">{lang}</p>
                         <p className="text-[10px] font-mono tracking-widest uppercase text-muted-foreground">{level}</p>
                       </div>
                     ))}
@@ -650,38 +693,6 @@ export default function Home() {
 
               </div>
             </div>
-
-            {/* ④ Skills bento grid */}
-            <RevealBlock delay={0.1}>
-              <p className="text-xs font-mono tracking-[0.2em] uppercase text-primary mb-6">Skills</p>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                {SKILL_GROUPS.map((group, gi) => (
-                  <div
-                    key={group.label}
-                    className={`border border-border p-6 hover:border-primary/50 transition-colors group ${gi === 0 ? "md:col-span-2" : ""}`}
-                  >
-                    {/* Group header */}
-                    <div className="flex items-center gap-3 mb-5">
-                      <span className="text-primary text-lg leading-none select-none">✦</span>
-                      <span className="text-xs font-mono tracking-widest uppercase text-muted-foreground">
-                        {group.label}
-                      </span>
-                    </div>
-                    {/* Tags */}
-                    <div className="flex flex-wrap gap-2">
-                      {group.items.map((item) => (
-                        <span
-                          key={item}
-                          className="text-xs font-mono px-3 py-1.5 bg-secondary/60 text-foreground/80 group-hover:text-foreground transition-colors"
-                        >
-                          {item}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </RevealBlock>
 
           </div>
         </section>
